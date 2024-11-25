@@ -18,7 +18,7 @@ void encryptMessage(const std::string& plaintext, unsigned char* ciphertext, int
     int len;
 
     // Call the method from OpenSSL to create and initialize the context. Then call the handleErrors() method
-    EVP_CIPHER_CTX* ctx = EVP_CIPHER_CTX_new();
+    ctx = EVP_CIPHER_CTX_new();
     if (!ctx) {
         handleErrors();
     }
