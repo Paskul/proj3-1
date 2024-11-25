@@ -64,9 +64,10 @@ void decryptMessage(EVP_CIPHER_CTX* ctx, const unsigned char* encryptedData, int
     finalDecryptedLen = decryptedLen;
 
     // Call the method from OpenSSL to finalize decryption. Then call handleErrors()
-    if (EVP_DecryptFinal_ex(ctx, decryptedBuffer + decryptedLen, &decryptedLen) != 1)
+    if (EVP_DecryptFinal_ex(ctx, decryptedBuffer + decryptedLen, &decryptedLen) != 1) {
         handleErrors();
-
+    }
+        
     finalDecryptedLen += decryptedLen;
     decryptedBuffer[finalDecryptedLen] = '\0'; 
 }
