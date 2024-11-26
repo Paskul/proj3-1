@@ -31,7 +31,7 @@ In Server/server.cpp, there was an error at line:
 send(clientSocket, decryptedBuffer,  strlen(reinterpret_cast<const char*>(decryptedBuffer)), 0);
 
 We added import:
-#include <string>
+#include < string >
 
 and the unknown function error went away.
 
