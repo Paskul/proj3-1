@@ -17,6 +17,9 @@ void encryptMessage(const std::string& plaintext, unsigned char* ciphertext, int
     EVP_CIPHER_CTX* ctx;
     int len;
 
+    // only really care to handleErrors() if we get an error code from any of our OpenSSL functions
+    // works fine as a result
+
     // Call the method from OpenSSL to create and initialize the context. Then call the handleErrors() method
     ctx = EVP_CIPHER_CTX_new();
     if (!ctx) {
@@ -50,6 +53,9 @@ void encryptMessage(const std::string& plaintext, unsigned char* ciphertext, int
 void decryptMessage(EVP_CIPHER_CTX* ctx, const unsigned char* encryptedData, int encryptedLen, const unsigned char* aesKey, const unsigned char* iv, unsigned char* decryptedBuffer) {
     int decryptedLen = 0;
     int finalDecryptedLen = 0;
+
+    // only really care to handleErrors() if we get an error code from any of our OpenSSL functions
+    // works fine as a result
     
     // Call the method from OpenSSL to initialize decryption context with AES-256-CBC. Then call handleErrors()
     if (EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, aesKey, iv) != 1) {
