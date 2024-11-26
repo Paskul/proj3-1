@@ -20,4 +20,15 @@ In the client terminal, type a message
 In the server terminal, an encrypted message and the message you just typed in the client terminal will show up
 If both messages match, then you do encryption and decryption methods correctly
 
+This project was worked on by Pascal Sikorski and Gustavo Lucca. There was a change in CMakeLists.txt of line:
+cmake_minimum_required(VERSION 3.27)
+to
+cmake_minimum_required(VERSION 3.26.5)
 
+In Server/server.cpp, there was an error at line:
+send(clientSocket, decryptedBuffer,  strlen(reinterpret_cast<const char*>(decryptedBuffer)), 0);
+We added import:
+#include <string>
+and the unknown function error went away.
+
+In total, making the correct common.cpp and addressing the other problems of the repo led to us having a working output.
